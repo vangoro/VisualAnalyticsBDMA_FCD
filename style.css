@@ -1,10 +1,12 @@
-body {
-  font-family: 'Arial', sans-serif; 
+.main-title {
+  text-align: center;
+  font-size: 28px;
+  color: #d32f2f;
+  margin-bottom: 20px;
 }
 
 .responsive-svg-container {
-  margin-right: auto;
-  margin-left: auto;
+  margin: 0 auto;
   width: 100%;
   max-width: 800px;
 }
@@ -16,12 +18,97 @@ body {
   color: white;
   padding: 5px;
   border-radius: 3px;
-  pointer-events: none; /* Ensures the tooltip doesn't interfere with mouse events */
+  pointer-events: none;
+}
+
+.large-label {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.search-button {
+  font-size: 18px;
+  padding: 8px 12px;
+  margin-left: 10px;
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pie-chart-title {
+  text-align: center;
+  font-size: 24px;
+  margin-top: 20px;
+  color: #333;
+  font-weight: bold;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#searchContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#citySearch {
+  width: 300px; /* Increase the width of the search bar */
+  height: 40px; /* Increase the height of the search bar */
+  font-size: 16px; /* Make text larger */
+  padding: 5px; /* Add padding for better appearance */
+  border: 1px solid #ccc; /* Add a border */
+  border-radius: 5px; /* Round the edges */
+}
+
+#searchButton {
+  height: 40px;
+  margin-left: 10px;
+  padding: 0 15px;
+  font-size: 16px;
+  border: none;
+  background-color: #007BFF;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#searchButton:hover {
+  background-color: #0056b3;
+}
+
+#chartContainer {
+  display: flex;
+  flex-direction: row-reverse; /* Keeps the legend on the left side */
+  justify-content: center; /* Center the pie chart and legend together */
+  align-items: flex-start; /* Aligns them at the top */
+  width: 100%;
+  max-width: 1200px; /* Limits the container width */
+  margin-top: 20px;
+  margin-left: auto; /* Center the container within its parent */
+  margin-right: auto; /* Center the container within its parent */
+}
+
+#pie {
+  flex: 2; /* Pie chart takes more space */
+  margin-left: 20px; /* Space between pie chart and legend */
 }
 
 #legend {
-  font-family: Arial, sans-serif;
-  line-height: 1.5;
+  flex: 1; /* Legend takes available space */
+  max-width: 300px; /* Limits the width of the legend */
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centers the legend items vertically */
 }
 
 #legend div {
@@ -31,29 +118,7 @@ body {
 }
 
 #legend div div {
+  width: 15px;
+  height: 15px;
   margin-right: 8px;
-}
-
-/* Style for larger select elements */
-.large-dropdown {
-  font-size: 18px;  /* Increase font size */
-  padding: 8px 12px;  /* Add padding for larger clickable area */
-  width: 200px;  /* Set a fixed width or use a percentage for responsiveness */
-  border-radius: 4px;  /* Optional: round the corners */
-  border: 1px solid #ccc;  /* Optional: border style */
-  margin-right: 10px;  /* Add some space between the elements */
-}
-
-/* Style for larger labels */
-.large-label {
-  font-size: 18px;  /* Increase label font size */
-  margin-right: 10px;  /* Add some space between label and dropdown */
-}
-
-.pie-chart-title {
-  text-align: center;
-  font-size: 24px;
-  margin-top: 20px;
-  color: #333; /* Adjust color */
-  font-weight: bold; /* Optional: make it bold */
 }

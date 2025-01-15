@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Interactive Map of French Crime Behavior by Cities | VA Project</title>
-	<link rel="stylesheet" type="text/css" href="./style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Safe Cities for Your Internship or Travel in France</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
 <body>
-	<div>
-		<label for="yearDropdown" class="large-label">Select Year:</label>
-		<select id="yearDropdown" class="large-dropdown">
-		  <!-- Options will be dynamically generated -->
-		</select>
-		<label for="regionDropdown" class="large-label">Select Region:</label>
-		<select id="regionDropdown" class="large-dropdown">
-		  <!-- Options will be dynamically generated -->
-		</select>
-	</div>			
-	<h2 id="pie-chart-title" class="pie-chart-title">French Crime Distribution by Indicator, Region, and Year</h2>
-	<!-- <div id="map" class="responsive-svg-container"></div> -->
-	<div id="pie" class="responsive-svg-container"></div>
-	<div id="tooltip" class="tooltip"></div>
-
-	<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-	<script src="./script.js"></script>
+    <h1 class="main-title">Discover Safe Cities for Your Internship or Travel in France</h1>
+    <div id="searchContainer">
+        <label for="citySearch" class="large-label">Search City:</label>
+        <input type="text" id="citySearch" list="citySuggestions" placeholder="Search for a city">
+        <datalist id="citySuggestions"></datalist>
+        <button id="searchButton">Search</button>
+    </div>
+    <h2 id="pie-chart-title" class="pie-chart-title">French Crime Distribution by Indicator and Region</h2>
+    <div id="chartContainer">
+        <div id="pie" class="responsive-svg-container"></div>
+        <div id="legend"></div>
+    </div>
+    <div id="tooltip" class="tooltip"></div>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="./script.js"></script>
 </body>
 </html>
