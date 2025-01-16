@@ -1,5 +1,5 @@
 // Pie chart initialization function
-d3.csv("./final_translated_data_V2.csv", d => ({
+d3.csv("./final_translated_data_V3.csv", d => ({
     value: +d.Valeurs,
     title: d.Titre,
     year: +d.Unite_temps,
