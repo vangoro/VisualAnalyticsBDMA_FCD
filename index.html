@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discover Safe Cities for Your Internship or Travel in France</title>
+    <title>Discover Safe Regions for Your Internship or Travel in France</title>
     <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
 <body>
-    <h1 class="main-title">Discover Safe Cities for Your Internship or Travel in France</h1>
+    <h1 class="main-title">Discover Safe Regions for Your Internship or Travel in France</h1>
     <div id="searchContainer">
-        <label for="citySearch" class="large-label">Search City:</label>
-        <input type="text" id="citySearch" list="citySuggestions" placeholder="Search for a city">
-        <datalist id="citySuggestions"></datalist>
+        <label for="regionSearch" class="large-label">Search Region:</label>
+        <input type="text" id="regionSearch" list="regionSuggestions" placeholder="Search for a region">
+        <datalist id="regionSuggestions"></datalist>
         <button id="searchButton">Search</button>
     </div>
     <h2 id="pie-chart-title" class="pie-chart-title">French Crime Distribution by Indicator and Region</h2>
+    <h3 id="currentRegion" class="current-region">Currently Showing: <span id="regionName"></span></h3>
     <div id="chartContainer">
         <div id="pie" class="responsive-svg-container"></div>
         <div id="legend"></div>

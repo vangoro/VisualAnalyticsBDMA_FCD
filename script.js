@@ -1,41 +1,43 @@
-// Load and filter the dataset for the year 2023
-const parseTime = d3.timeParse("%Y");
-d3.csv("./final_translated_data.csv", d => ({
+// Pie chart initialization function
+d3.csv("./final_translated_data_V2.csv", d => ({
   value: +d.Valeurs,
   title: d.Titre,
   year: +d.Unite_temps,
-  date: parseTime(d.Unite_temps),
   ordinates: d.Ordonnees,
   indicator: d.Indicateur,
   geographical_area: d.Zone_geographique,
 })).then(data => {
   // Filter for the year 2023
   const filteredData = data.filter(d => d.year === 2023);
-  const cities = Array.from(new Set(filteredData.map(d => d.geographical_area))).sort();
+  const regions = Array.from(new Set(filteredData.map(d => d.geographical_area))).sort();
 
   // Populate the dropdown menu (datalist)
-  const citySuggestions = document.getElementById("citySuggestions");
-  cities.forEach(city => {
+  const regionSuggestions = document.getElementById("regionSuggestions");
+  regions.forEach(region => {
       const option = document.createElement("option");
-      option.value = city;
-      citySuggestions.appendChild(option);
+      option.value = region;
+      regionSuggestions.appendChild(option);
   });
+
+  // Initialize with the first region and display it
+  const defaultRegion = regions[0];
+  document.getElementById("regionName").textContent = defaultRegion;  // Set the default region name
+  createPieChart(filteredData.filter(d => d.geographical_area === defaultRegion));
 
   // Event listener for the search button
   document.getElementById("searchButton").addEventListener("click", () => {
-      const cityInput = document.getElementById("citySearch");
-      const city = cityInput.value;
+      const regionInput = document.getElementById("regionSearch");
+      const region = regionInput.value;
 
-      if (cities.includes(city)) {
-          console.log(`Selected city: ${city}`);
-          createPieChart(filteredData.filter(d => d.geographical_area === city));
+      if (regions.includes(region)) {
+          console.log(`Selected region: ${region}`);
+          // Update the region name display
+          document.getElementById("regionName").textContent = region;
+          createPieChart(filteredData.filter(d => d.geographical_area === region));
       } else {
-          alert("City not found. Please select a valid city from the dropdown.");
+          alert("Region not found. Please select a valid region from the dropdown.");
       }
   });
-
-  // Initialize with the first city
-  createPieChart(filteredData.filter(d => d.geographical_area === cities[0]));
 });
 
 // Pie chart function
