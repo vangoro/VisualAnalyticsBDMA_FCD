@@ -20,7 +20,42 @@
         <div id="pie" class="responsive-svg-container"></div>
         <div id="legend"></div>
     </div>
-    <div id="tooltip" class="tooltip"></div>
+
+    <div id="extraChartsContainer">
+        <div class="small-chart-wrapper">
+            <div id="franceLegend" class="legend left-legend"></div>
+            <div class="small-chart-container">
+                <h3><!-- France --></h3>
+                <div id="francePie" class="responsive-svg-container small-pie"></div>
+            </div>
+        </div>
+        <div class="small-chart-wrapper">
+            <div class="small-chart-container">
+                <h3><!-- Île-de-France --></h3>
+                <div id="ileDeFrancePie" class="responsive-svg-container small-pie"></div>
+            </div>
+            <div id="idfLegend" class="legend right-legend"></div>
+        </div>
+    </div>
+    
+    <!-- Data Source Information -->
+    <footer class="data-source">
+        <p>
+            The database of chronological series of the Ministerial Statistical Service for Internal Security 
+            (<a href="https://www.interieur.gouv.fr/Interstats/Le-SSMSI/A-propos-du-SSMSI" target="_blank">SSMSI</a>) 
+            references several thousand monthly, quarterly, annual, national, departmental statistical indicators 
+            relating to the areas monitored by the service: crimes, offenses, contraventions, complaint rates, 
+            feeling of insecurity, etc. For each indicator, in addition to its values, the database provides 
+            information in particular on its source, its periodicity, its unit of account, and its definition, 
+            supplemented by a link to an associated publication directly downloadable from the 
+            <a href="https://www.interieur.gouv.fr/Interstats/Publications" target="_blank">SSMSI website</a>.
+        </p>
+        <p>
+            The most recent download of the dataset we made was on November 2, 2024, at 3:11:10 PM. 
+            At the time, the data was last updated on October 16th, 2024.
+        </p>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script src="./script.js"></script>
 </body>
