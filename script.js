@@ -1,15 +1,14 @@
 // Pie chart initialization function
-d3.csv("./final_translated_data_V3.csv", d => ({
+d3.csv("./final_translated_data_V4.csv", d => ({
     value: +d.Valeurs,
     title: d.Titre,
-    year: +d.Unite_temps,
     statistic: d.Statistique,
     ordinates: d.Ordonnees,
     indicator: d.Indicateur,
     geographical_area: d.Zone_geographique,
   })).then(data => {
-    // Filter for the year 2023
-    const filteredData = data.filter(d => d.year === 2023 && d.statistic == "Name");
+    // Filter for Values, rather than Rates
+    const filteredData = data.filter(d => d.statistic == "Name");
   
     // Extract regions while excluding "France" and "Île-de-France" from the main dropdown
     const regions = Array.from(new Set(filteredData
