@@ -9,13 +9,13 @@ d3.csv("./final_translated_data_V4.csv", d => ({
   })).then(data => {
     // Filter for Values, rather than Rates
     const filteredData = data.filter(d => d.statistic == "Name");
-
+  
     // Extract regions while excluding "France" and "Île-de-France" from the main dropdown
     const regions = Array.from(new Set(filteredData
         .map(d => d.geographical_area)
         .filter(region => region !== "France" && region !== "Ile-de-France")
     )).sort();
-
+  
     // Populate the dropdown menu (datalist)
     const regionSuggestions = document.getElementById("regionSuggestions");
     regions.forEach(region => {
@@ -23,25 +23,21 @@ d3.csv("./final_translated_data_V4.csv", d => ({
       option.value = region;
       regionSuggestions.appendChild(option);
     });
-
-    // Parse region from the URL path (e.g., "/02-Aisne")
-    const urlRegion = window.location.pathname.split('/')[1];  // Get the part after the domain
-    const validRegion = regions.find(region => region.toLowerCase().replace(/\s+/g, '-') === urlRegion.toLowerCase());
-
-    // If the URL contains a valid region, show it, otherwise show the default region
-    const regionToShow = validRegion || regions[0]; 
-    document.getElementById("regionName").textContent = regionToShow;
-    createPieChart(filteredData.filter(d => d.geographical_area === regionToShow), "#pie", "#legend");
-
+  
+    // Initialize with the first region and display it
+    const defaultRegion = regions[0];
+    document.getElementById("regionName").textContent = defaultRegion;
+    createPieChart(filteredData.filter(d => d.geographical_area === defaultRegion), "#pie", "#legend");
+  
     // Generate separate pie charts for France and Île-de-France
     createPieChart(filteredData.filter(d => d.geographical_area === "France"), "#francePie", "#franceLegend", "France");
     createPieChart(filteredData.filter(d => d.geographical_area === "Ile-de-France"), "#ileDeFrancePie", "#idfLegend", "Île-de-France");
-
+    
     // Event listener for the search button
     document.getElementById("searchButton").addEventListener("click", () => {
       const regionInput = document.getElementById("regionSearch");
       const region = regionInput.value;
-
+  
       if (regions.includes(region)) {
         console.log(`Selected region: ${region}`);
         document.getElementById("regionName").textContent = region;
@@ -51,7 +47,7 @@ d3.csv("./final_translated_data_V4.csv", d => ({
       }
     });
   });
-
+  
 // General pie chart function
 const createPieChart = (data, chartId, legendId, regionTitle = "") => {
     const width = 400, height = 400;
