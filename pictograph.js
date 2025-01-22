@@ -52,11 +52,11 @@ d3.csv("./final_translated_data_V4.csv", d => ({
 
     // Set default selected regions
     dropdown1.value = regions[0] || "";
-    dropdown2.value = regions[1] || "";
+    dropdown2.value = regions[93] || "";
 
     // Initial chart setup
     if (regions.length >= 2) {
-        updatePictographChart(aggregatedData, regions[0], regions[1]);
+        updatePictographChart(aggregatedData, regions[0], regions[93]);
     }
 
     // Event listener for button
@@ -79,8 +79,8 @@ function updatePictographChart(data, region1, region2) {
         "Physical violence",
         "Thefts and attempted robberies with violence",
         "Burglaries and attempted burglaries",
-        "Thefts and attempted thefts related to vehicles",
         "Thefts and attempted thefts without violence",
+        "Thefts and attempted thefts related to vehicles",
         "Willful destruction and damage",
         "Drug offences",
         "Payment fraud and scams"
@@ -89,15 +89,15 @@ function updatePictographChart(data, region1, region2) {
     // Define icon mapping
     const iconMapping = {
         "Homicides and attempted homicides": "\uf6e2",
-        "Sexual violence": "\uf6e2",
-        "Physical violence": "\uf6e2",
-        "Thefts and attempted robberies with violence": "\uf5e1",
-        "Burglaries and attempted burglaries": "\uf5e1",
+        "Sexual violence": "\uf556",
+        "Physical violence": "\uf556",
+        "Thefts and attempted robberies with violence": "\uf21b",
+        "Burglaries and attempted burglaries": "\uf21b",
+        "Thefts and attempted thefts without violence": "\uf21b",
         "Thefts and attempted thefts related to vehicles": "\uf5e1",
-        "Thefts and attempted thefts without violence": "\uf5e1",
         "Willful destruction and damage": "\uf5e1",
-        "Drug offences": "\uf21b",
-        "Payment fraud and scams": "\uf21b"
+        "Drug offences": "\uf484",
+        "Payment fraud and scams": "\uf09d"
     };
 
     // Filter data for selected regions and indicators

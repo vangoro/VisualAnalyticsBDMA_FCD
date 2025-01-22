@@ -1,14 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discover Safe Regions for Your Internship or Travel in France</title>
-    <link rel="stylesheet" type="text/css" href="./style.css">
-</head>
+    <title>Crime Data Visualization in French Regions</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- Load FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
+</head>
 <body>
-    <h1 class="main-title">Discover Safe Regions for Your Internship or Travel in France</h1>
+    <header>
+        <h3>Discover Safe Regions for Your Internship or Travel in France</h3>
+        <p>Search for a city to see crime statistics</p>    
+    </header>
+
+    <main>
+        <div id="main-map-container">
+            <select id="crimeTypeSelector"></select>
+            <svg id="choropleth" width="1000" height="800"></svg>
+        </div>
+        <div id="region-maps" class="region-maps-container"></div>
+    </main>
+
     <div id="searchContainer">
         <label for="regionSearch" class="large-label">Search Region:</label>
         <input type="text" id="regionSearch" list="regionSuggestions" placeholder="Search for a region">
@@ -38,7 +52,24 @@
             <div id="idfLegend" class="legend right-legend"></div>
         </div>
     </div>
-    
+
+    <div class="container">
+        <h1>Which Region has more crime?</h1>
+        <h2>Rate per 1000 inhabitants (1 icon = 1 case per 1000 people)</h2>
+
+        <div class="selection-container">
+            <label for="region1">Select First Region:</label>
+            <select id="region1"></select>
+
+            <label for="region2">Select Second Region:</label>
+            <select id="region2"></select>
+
+            <button id="updateButton">Compare</button>
+        </div>
+
+        <div id="pictographChart"></div>
+    </div>
+
     <!-- Data Source Information -->
     <footer class="data-source">
         <p>
@@ -57,7 +88,8 @@
         </p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-    <script src="./script.js"></script>
+    <script src="script.js" defer></script>
+    <script src="script_pie.js" defer></script>
+    <script src="pictograph.js" defer></script>
 </body>
 </html>
